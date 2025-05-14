@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head th:include="index :: head">
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div th:include="index :: menu" id="menu"></div>
+
+    <h1 class="centro">Adicionar Item Produto</h1>
+    <form th:object="${itemCompra}" method="post" th:action="@{/salvarItemCompra}">
+        <input hidden="true" th:field="*{id}">
+        <label for="descricaoItemCompra" class="form-label">Descrição:</label>
+        <input type="text" th:field="*{descricao}" name="descricao" class="form-control mb-2" id="descricaoItemCompra" placeholder="Digite a descrição do produto" required>
+
+        <label for="valorItemCompra" class="form-label">Valor:</label>
+        <input type="number" th:field="*{valor}" name="valor" class="form-control" id="valorItemCompra" step="0.01" min="1" placeholder="Digite o valor do produto" required>
+
+        <button class="btn btn-success w-100 mt-3">Salvar</button>
+    </form>
+
+</body>
+</html>

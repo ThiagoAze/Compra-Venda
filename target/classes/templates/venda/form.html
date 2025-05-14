@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head th:include="index :: head">
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div th:include="index :: menu" id="menu"></div>
+
+    <div class="container">
+        <h1 class="centro">Vender Produto</h1>
+        <form th:object="${venda}">
+            <input hidden="true" th:field="*{id}">
+            <label for="nomeVenda" class="form-label">Nome:</label>
+            <input type="text" th:field="*{nome}" class="form-control mb-2" id="nomeVenda" placeholder="Digite o nome do produto" required>
+
+            <label for="itemVenda">Itens de Venda:</label>
+            <select th:field="*{itens}" class="form-control" id="itemVenda" required multiple>
+                <option th:each="item : ${itemVendas}" th:value="${item.id}" th:text="${item.descricao + ' - R$ ' + item.valor}"></option>
+            </select>
+            <!-- Se não existir itens, mostra a mensagem -->
+            <div th:if="${#lists.isEmpty(itemVendas)}"> <!-- Verificar se a lista está vazia -->
+                <small class="form-text text-muted text-danger"> É necessário cadastrar pelo menos um item antes de realizar uma venda.</small>
+            </div>
+
+            <button class="btn btn-danger w-100 mt-3" th:formaction="@{/salvarVenda}" formmethod="post">Vender</button>
+        </form>
+    </div>
+
+</body>
+</html>

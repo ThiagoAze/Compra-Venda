@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head th:include="index :: head">
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div th:include="index :: menu" id="menu"></div>
+    <div class="container">
+        <h1 class="centro">Lista de itens - Produtos Venda</h1>
+        <a type="button" class="btn btn-outline-danger float-right" th:href="@{/itemVender}">Adicionar item</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="itemVenda : ${listaDeItensVendas}">
+                    <td><span th:text="${itemVenda.id}"></span></td>
+                    <td><span th:text="${itemVenda.descricao}"></span></td>
+                    <td><span th:text="${itemVenda.valor}"></span></td>
+                    <td>
+                        <a th:href="@{'/alterarItemVenda/' + ${itemVenda.id}}" type="button" class="btn btn-primary">Alterar</a>
+                        <a th:href="@{'/removerItemVenda/' + ${itemVenda.id}}" type="button" class="btn btn-danger">Remover</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

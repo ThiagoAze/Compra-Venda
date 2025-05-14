@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Início</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .menu{
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #menu{
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        form{
+            width: 400px;
+            margin: auto;
+        }
+        .centro{
+            width: 100%;
+            margin: auto;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        ul li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div th:fragment="menu" id="menu">
+        <h1><span th:text="${titulo}"></span></h1>
+        <a href="http://localhost:8080/" class="btn btn-secondary">Início</a>
+        <a href="http://localhost:8080/banco" class="btn btn-primary" target="_blank">Banco</a>
+        <a href="http://localhost:8080/venda" class="btn btn-danger" id="vender">Venda</a>
+        <a href="http://localhost:8080/itemVenda" class="btn btn-danger" id="itemVenda">Item Venda</a>
+        <a href="http://localhost:8080/compra" class="btn btn-success" id="comprar">Compra</a>
+        <a href="http://localhost:8080/itemCompra" class="btn btn-success" id="itemCompra">Item Compra</a>
+    </div>
+</body>
+</html>
